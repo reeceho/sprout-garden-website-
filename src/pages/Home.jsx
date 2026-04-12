@@ -23,7 +23,9 @@ function BlurText({ text, delay = 0 }) {
 function Hero() {
   return (
     <section className="hero">
-      <div className="hero-bg" aria-hidden="true" />
+      <video className="hero-video" autoPlay muted loop playsInline aria-hidden="true" poster="/hero-bg.jpg">
+        <source src="/hero-loop.mp4" type="video/mp4" />
+      </video>
       <div className="hero-overlay" aria-hidden="true" />
       <div className="hero-content">
         <h1>
