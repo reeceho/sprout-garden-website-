@@ -22,42 +22,20 @@ function BlurText({ text, delay = 0 }) {
 
 function Hero() {
   return (
-    <section className="hero">
-      <video className="hero-video" autoPlay muted loop playsInline aria-hidden="true" poster="/hero-bg.jpg">
-        <source src="/hero-loop.mp4" type="video/mp4" />
-      </video>
-      <div className="hero-overlay" aria-hidden="true" />
-      <div className="hero-content">
-        <h1>
-          <BlurText text="新舊交替" delay={.2} />
-          <br />
-          <BlurText text="重寫教育" delay={.6} />
-        </h1>
-        <motion.div className="hero-sub"
-          initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: .8, delay: 1.1, ease: EASE }}>
-          專為小學生進步設計嘅系統
-        </motion.div>
-        <motion.div className="hero-en"
-          initial={{ opacity: 0 }} animate={{ opacity: .55 }}
-          transition={{ duration: .8, delay: 1.3 }}>
-          A system designed for primary student progress
-        </motion.div>
-        <motion.div className="hero-facts"
-          initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: .7, delay: 1.5, ease: EASE }}>
-          <span className="hero-fact">1:4 小班</span>
-          <span className="hero-fact">P1–P6</span>
-          <span className="hero-fact">英 · 中 · 數</span>
-          <span className="hero-fact">屯門</span>
-        </motion.div>
-        <motion.div className="hero-cta"
-          initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: .7, delay: 1.7, ease: EASE }}>
-          <a href={WA} target="_blank" rel="noopener" className="btn-green">免費試堂</a>
-          <a href="#progress" className="btn-ghost">了解更多 →</a>
-        </motion.div>
-      </div>
+    <section className="hero hero-video-only">
+      <motion.div className="hero-video-wrap"
+        initial={{ opacity: 0 }} animate={{ opacity: 1 }}
+        transition={{ duration: .8, ease: EASE }}>
+        <video className="hero-video" autoPlay muted loop playsInline poster="/hero-bg.jpg">
+          <source src="/hero-loop.mp4" type="video/mp4" />
+        </video>
+      </motion.div>
+      <motion.div className="hero-bottom"
+        initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: .7, delay: .5, ease: EASE }}>
+        <a href={WA} target="_blank" rel="noopener" className="btn-green">免費試堂</a>
+        <a href="#progress" className="btn-ghost">了解更多 →</a>
+      </motion.div>
     </section>
   )
 }
@@ -76,7 +54,7 @@ function ProgressTracking() {
             viewport={{ once: true, margin: '-15%' }}
             transition={{ duration: .8, ease: EASE }}>
             <div className="section-eyebrow">學習追蹤</div>
-            <h2>你小朋友嘅進步<br />我哋幫你跟住</h2>
+            <h2>緊貼學生進度</h2>
             <p>每堂記錄學習表現。你隨時睇到小朋友嘅進度 — 邊度強、邊度要加強，一目了然。</p>
             <p>唔再靠估，唔再等到考試先知。</p>
           </motion.div>
@@ -103,7 +81,7 @@ const MaIcon = () => <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" 
 
 const SUBJECTS = [
   { Icon: EnIcon, cls: 'en', title: '英文', en: 'English', body: '閱讀理解、文法、寫作全覆蓋。每堂追蹤進度，你隨時了解小朋友學到咩。', price: 'P1–P3: $2,200 / P4–P6: $2,600', slots: '星期一、二、六、日' },
-  { Icon: ZhIcon, cls: 'zh', title: '中文', en: 'Chinese', body: '認字、閱讀、寫作循序漸進。粵語授課，配合學校進度。', price: 'P1–P3: $2,200 / P4–P6: $2,600', slots: '星期四' },
+  { Icon: ZhIcon, cls: 'zh', title: '中文', en: 'Chinese', body: '認字、閱讀、寫作循序漸進。粵語或普通話授課，配合學校進度。', price: 'P1–P3: $2,200 / P4–P6: $2,600', slots: '星期四' },
   { Icon: MaIcon, cls: 'ma', title: '數學', en: 'Mathematics', body: '概念理解行先，唔只操數。邏輯思維同解題技巧並重。', price: 'P1–P3: $2,200 / P4–P6: $2,600', slots: '星期三、四、五、六' },
 ]
 
@@ -143,12 +121,7 @@ function Subjects() {
                 <h3>{s.title}</h3>
                 <div className="en-label">{s.en}</div>
                 <p>{s.body}</p>
-                <div className="subject-meta">
-                  <span className="subject-badge">P1–P6 · 1:4 小班</span>
-                  <span className="subject-badge">{s.slots}</span>
-                </div>
-                <div className="subject-price">{s.price}<span style={{ fontSize: 11, opacity: .6 }}> / 10 堂</span></div>
-                <a href={WA} target="_blank" rel="noopener" className="subject-cta">WhatsApp 報名 →</a>
+                <div className="subject-badge">P1–P6 · 1:4 小班</div>
               </TiltCard>
             </motion.div>
           ))}
@@ -162,18 +135,22 @@ function ExamKing() {
   return (
     <section className="examking">
       <div className="container">
-        <div className="ek-grid">
-          <motion.div className="ek-body" initial={{ opacity: 0, x: -40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: .8, ease: EASE }}>
-            <div className="section-eyebrow" style={{ color: 'rgba(255,255,255,.5)' }}>考得好 Exam King</div>
-            <h2>屋企都可以練習</h2>
-            <p>配合學校課本嘅英文練習卷，隨時出、隨時做。每份卷附完整答案同 TSA 評分準則。</p>
-            <div className="ek-pubs">
-              {['Oxford', 'Longman', 'Head Start', 'Oxford Ready'].map(p => <span key={p} className="ek-pub">{p}</span>)}
-            </div>
-            <a href="https://www.examkinghk.com" target="_blank" rel="noopener" className="btn-white">免費試用 →</a>
-          </motion.div>
-          <motion.div className="ek-visual" initial={{ opacity: 0, x: 40, scale: .92 }} whileInView={{ opacity: 1, x: 0, scale: 1 }} viewport={{ once: true }} transition={{ duration: .9, delay: .1, ease: EASE }}>
-            <motion.div className="ek-frame" animate={{ y: [0, -8, 0] }} transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}>
+        <motion.div className="ek-header" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: .8, ease: EASE }}>
+          <div className="section-eyebrow" style={{ color: 'rgba(255,255,255,.5)' }}>我哋自家開發嘅網上練習平台</div>
+          <div className="ek-banner">
+            <motion.span className="ek-banner-text"
+              animate={{ backgroundPosition: ['0% 50%', '200% 50%'] }}
+              transition={{ duration: 4, repeat: Infinity, ease: 'linear' }}>
+              考得好 Exam King
+            </motion.span>
+          </div>
+          <p>打開 examkinghk.com，揀課本、揀單元，幾秒就出到學校練習卷。<br/>喺屋企用電話或電腦就做到，唔使買補充練習。</p>
+        </motion.div>
+
+        <motion.div className="ek-devices" initial={{ opacity: 0, scale: .95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: .9, delay: .1, ease: EASE }}>
+          {/* Laptop frame */}
+          <div className="ek-laptop">
+            <div className="ek-laptop-screen">
               <div className="ek-bar"><div className="dot" /><div className="dot" /><div className="dot" /><div className="url">examkinghk.com</div></div>
               <div className="ek-body-inner">
                 <div className="title">English Practice Paper</div>
@@ -185,9 +162,44 @@ function ExamKing() {
                   <strong style={{ color: '#314e5e' }}>3.</strong> Choose: (A) is write (B) is writing (C) writing
                 </div>
               </div>
-            </motion.div>
+            </div>
+            <div className="ek-laptop-base" />
+          </div>
+          {/* Phone frame */}
+          <div className="ek-phone">
+            <div className="ek-phone-notch" />
+            <div className="ek-phone-screen">
+              <div style={{ fontSize: 10, color: '#8b949a', textAlign: 'center', padding: '10px 0 6px', fontFamily: 'var(--f-mono)', letterSpacing: '.06em' }}>examkinghk.com</div>
+              <div style={{ padding: '0 12px 14px', fontSize: 11, lineHeight: 1.8 }}>
+                <div style={{ fontFamily: 'var(--f-zh)', fontSize: 14, fontWeight: 700, textAlign: 'center', marginBottom: 8 }}>English Practice</div>
+                <strong style={{ color: '#314e5e' }}>1.</strong> She ___ (read) a book.<br />
+                <strong style={{ color: '#314e5e' }}>2.</strong> They ___ (play) football.
+              </div>
+            </div>
+          </div>
+        </motion.div>
+
+        <motion.div className="ek-features" initial={{ opacity: 0, y: 14 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: .7, delay: .2, ease: EASE }}>
+          <span className="ek-feat">📱 手機或電腦都用到</span>
+          <span className="ek-feat">📄 即時出卷 + 答案</span>
+          <span className="ek-feat">📊 TSA 評分準則</span>
+          <span className="ek-feat">🆓 每月 5 份免費</span>
+        </motion.div>
+
+        <div className="ek-ticker-wrap">
+          <motion.div className="ek-ticker"
+            animate={{ x: ['0%', '-50%'] }}
+            transition={{ x: { repeat: Infinity, repeatType: 'loop', duration: 20, ease: 'linear' } }}>
+            {[...Array(2)].flatMap((_, r) =>
+              ['Oxford Living Grammar', 'Longman Elect', 'Primary Longman Express', 'Head Start Grammar', 'Oxford Ready Grammar'].map((p, i) =>
+                <span key={`${r}-${i}`} className="ek-pub">{p}</span>
+              )
+            )}
           </motion.div>
         </div>
+        <motion.div className="ek-bottom" initial={{ opacity: 0, y: 14 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: .7, delay: .2, ease: EASE }}>
+          <a href="https://www.examkinghk.com" target="_blank" rel="noopener" className="btn-white" style={{ fontSize: 16, padding: '18px 40px' }}>免費試用 考得好 →</a>
+        </motion.div>
       </div>
     </section>
   )
@@ -261,9 +273,9 @@ function FinalCTA() {
     <section className="final-cta">
       <div className="container">
         <motion.div initial={{ opacity: 0, scale: .92, filter: 'blur(8px)' }} whileInView={{ opacity: 1, scale: 1, filter: 'blur(0px)' }} viewport={{ once: true }} transition={{ duration: 1, ease: EASE }}>
-          <h2>想你小朋友真正進步？</h2>
-          <p>免費試堂，親身感受。星期一至五 7:00–8:00pm，WhatsApp 預約。</p>
-          <a href={WA} target="_blank" rel="noopener" className="btn-white-lg">免費試堂 →</a>
+          <h2>免費試堂，親身感受</h2>
+          <p>WhatsApp 預約，帶小朋友嚟試一堂。</p>
+          <a href={WA} target="_blank" rel="noopener" className="btn-white-lg">WhatsApp 預約試堂 →</a>
         </motion.div>
       </div>
     </section>
@@ -282,11 +294,9 @@ export default function Home() {
   return (
     <main>
       <Hero />
-      <TrialStrip />
       <ProgressTracking />
       <Subjects />
       <ExamKing />
-      <Timetable />
       <Location />
       <FinalCTA />
       <WhatsAppFloat />

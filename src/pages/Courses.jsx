@@ -19,6 +19,10 @@ const MATH = [
   { g: 'P3–P4', topics: '分數、小數、面積與周界、容量、多位數運算、圖形對稱' },
   { g: 'P5–P6', topics: '百分比、比例、速率、面積/體積進階、代數思維入門、統計' },
 ]
+const PTH = [
+  { g: 'K2–K3', topics: '拼音基礎、聲母韻母、日常會話、兒歌朗讀、聆聽理解' },
+  { g: 'P1–P3', topics: '拼音進階、朗讀課文、普通話會話、聆聽及說話練習' },
+]
 
 function SubjectBlock({ title, en, levels, color }) {
   return (
@@ -48,22 +52,12 @@ export default function Courses() {
         <SubjectBlock title="中文" en="Chinese" levels={CHN} color="var(--green)" />
         <SubjectBlock title="數學" en="Mathematics" levels={MATH} color="#c3943a" />
 
+        <SubjectBlock title="普通話" en="Putonghua" levels={PTH} color="var(--accent)" />
+
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: .7, ease: E }}>
           <h2>功課輔導班</h2>
           <p>星期一至五 4:00–6:00pm，獨立課室。</p>
           <p>功課班唔係補習 — 係一個有人睇住嘅環境，確保你小朋友嘅功課做得齊、做得好。導師會喺旁邊幫手解答問題，但唔會代做。</p>
-          <div className="card">
-            <h3>收費</h3>
-            <p>2 日/週：HK$1,600/月 · 3 日/週：HK$1,900/月 · 5 日/週：HK$2,400/月</p>
-          </div>
-
-          <h2>専科班收費</h2>
-          <div className="card">
-            <h3>每期 10 堂 · 每堂 1.5 小時 · 最多 4 人</h3>
-            <p>K2/K3 普通話：HK$1,800 / 10 堂</p>
-            <p>P1–P3 英文/中文/數學：HK$2,200 / 10 堂</p>
-            <p>P4–P6 英文/中文/數學：HK$2,600 / 10 堂</p>
-          </div>
         </motion.div>
       </div>
     </main>

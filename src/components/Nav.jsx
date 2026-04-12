@@ -3,12 +3,7 @@ import { Link, useLocation } from 'react-router-dom'
 import { motion } from 'framer-motion'
 
 const SproutLogo = () => (
-  <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M16 28 V18"/>
-    <path d="M16 18 C16 12 10 8 6 10 C10 10 14 14 16 18"/>
-    <path d="M16 18 C16 14 20 8 26 10 C22 10 18 14 16 18"/>
-    <circle cx="16" cy="6" r="2" fill="currentColor" stroke="none" opacity=".3"/>
-  </svg>
+  <img src="/logo.png" alt="小芽菜研習中心" style={{ width: 40, height: 40, objectFit: 'contain' }} />
 )
 
 const WA = 'https://wa.me/85244270658?text=%E4%BD%A0%E5%A5%BD%EF%BC%81%E6%88%91%E6%83%B3%E9%A0%90%E7%B4%84%E5%85%8D%E8%B2%BB%E8%A9%A6%E5%A0%82'

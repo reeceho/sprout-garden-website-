@@ -6,7 +6,10 @@ export default function Footer() {
       <div className="container">
         <div className="footer-grid">
           <div className="f-brand">
-            <div style={{ fontFamily: 'var(--f-zh)', fontSize: 20, fontWeight: 700, letterSpacing: '.02em' }}>小芽菜研習中心</div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+              <img src="/logo.png" alt="小芽菜研習中心" style={{ width: 48, height: 48, objectFit: 'contain' }} />
+              <span style={{ fontFamily: 'var(--f-zh)', fontSize: 20, fontWeight: 700, letterSpacing: '.02em' }}>小芽菜研習中心</span>
+            </div>
             <p>屯門小學英文、中文、數學補習。1:4 小班教學，每堂追蹤學習表現，幫你小朋友一步步進步。</p>
           </div>
           <div className="f-col">
