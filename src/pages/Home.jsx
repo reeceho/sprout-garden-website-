@@ -95,10 +95,14 @@ function ProgressTracking() {
   )
 }
 
+const EnIcon = () => <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" width="28" height="28"><path d="M4 4h16v16H4z"/><path d="M8 8h4M8 12h6M8 16h3"/></svg>
+const ZhIcon = () => <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" width="28" height="28"><path d="M4 5h16M7 5v14M12 5v14M17 5v5M14 10h6M17 10v9"/></svg>
+const MaIcon = () => <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" width="28" height="28"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 8v8"/></svg>
+
 const SUBJECTS = [
-  { icon: '📖', cls: 'en', title: '英文', en: 'English', body: '閱讀理解、文法、寫作全覆蓋。每堂追蹤進度，你隨時了解小朋友學到咩。', price: 'P1–P3: $2,200 / P4–P6: $2,600', slots: '星期一、二、六、日' },
-  { icon: '📝', cls: 'zh', title: '中文', en: 'Chinese', body: '認字、閱讀、寫作循序漸進。粵語授課，配合學校進度。', price: 'P1–P3: $2,200 / P4–P6: $2,600', slots: '星期四' },
-  { icon: '🔢', cls: 'ma', title: '數學', en: 'Mathematics', body: '概念理解行先，唔只操數。邏輯思維同解題技巧並重。', price: 'P1–P3: $2,200 / P4–P6: $2,600', slots: '星期三、四、五、六' },
+  { Icon: EnIcon, cls: 'en', title: '英文', en: 'English', body: '閱讀理解、文法、寫作全覆蓋。每堂追蹤進度，你隨時了解小朋友學到咩。', price: 'P1–P3: $2,200 / P4–P6: $2,600', slots: '星期一、二、六、日' },
+  { Icon: ZhIcon, cls: 'zh', title: '中文', en: 'Chinese', body: '認字、閱讀、寫作循序漸進。粵語授課，配合學校進度。', price: 'P1–P3: $2,200 / P4–P6: $2,600', slots: '星期四' },
+  { Icon: MaIcon, cls: 'ma', title: '數學', en: 'Mathematics', body: '概念理解行先，唔只操數。邏輯思維同解題技巧並重。', price: 'P1–P3: $2,200 / P4–P6: $2,600', slots: '星期三、四、五、六' },
 ]
 
 function TrialStrip() {
@@ -133,7 +137,7 @@ function Subjects() {
           {SUBJECTS.map(s => (
             <motion.div key={s.title} variants={item}>
               <TiltCard className="subject-card">
-                <div className={`subject-icon ${s.cls}`}>{s.icon}</div>
+                <div className={`subject-icon ${s.cls}`}><s.Icon /></div>
                 <h3>{s.title}</h3>
                 <div className="en-label">{s.en}</div>
                 <p>{s.body}</p>
