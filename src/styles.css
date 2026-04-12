@@ -43,14 +43,23 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:1;opac
 
 /* ═══ HERO ═══ */
 .hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:140px 28px 100px;overflow:hidden}
-.hero::before{content:"";position:absolute;top:-20%;right:-10%;width:65%;height:140%;background:radial-gradient(ellipse at center,rgba(49,78,94,.07),transparent 65%);filter:blur(60px);pointer-events:none}
-.hero::after{content:"";position:absolute;bottom:-10%;left:-10%;width:50%;height:70%;background:radial-gradient(ellipse at center,rgba(45,138,94,.06),transparent 65%);filter:blur(80px);pointer-events:none}
+/* Ken Burns background image — slow zoom gives a living/video feel */
+/* Show only the right half of the image (classroom/desk/plant) — left half has baked-in text */
+.hero-bg{position:absolute;inset:-5%;z-index:0;background:url('/hero-bg.jpg') 85% center/cover no-repeat;animation:kenBurns 20s ease-in-out infinite alternate;will-change:transform}
+@keyframes kenBurns{0%{transform:scale(1) translate(0,0)}100%{transform:scale(1.06) translate(-1%,.5%)}}
+/* Dark overlay so text reads clearly over the photo */
+/* Left side fully opaque (hides baked-in image text), fades to translucent on right (shows classroom) */
+.hero-overlay{position:absolute;inset:0;z-index:1;background:
+  linear-gradient(90deg,rgba(246,243,238,.97) 0%,rgba(246,243,238,.96) 35%,rgba(246,243,238,.7) 65%,rgba(246,243,238,.6) 100%),
+  linear-gradient(180deg,rgba(246,243,238,.3) 0%,transparent 30%,transparent 70%,rgba(246,243,238,.4) 100%)}
+@media(prefers-reduced-motion:reduce){.hero-bg{animation:none}}
 .hero-content{position:relative;z-index:2;max-width:1000px}
 .hero h1{font-family:var(--f-zh);font-size:clamp(52px,8.5vw,130px);font-weight:700;color:var(--text-strong);letter-spacing:.04em;line-height:1.15;margin-bottom:24px}
 .hero h1 .char{display:inline-block;will-change:filter,transform,opacity}
 .hero-sub{font-family:var(--f-body);font-size:clamp(18px,2.2vw,26px);color:var(--text-muted);font-weight:500;letter-spacing:.03em;line-height:1.6;margin-bottom:12px}
 .hero-en{font-family:var(--f-en);font-style:italic;font-size:clamp(14px,1.2vw,18px);color:var(--text-faint);opacity:.55;margin-bottom:24px}
-.hero-detail{font-size:15px;color:var(--text-muted);letter-spacing:.02em;line-height:1.8;margin-bottom:40px}
+.hero-facts{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:40px}
+.hero-fact{padding:8px 20px;border-radius:var(--r-pill);background:var(--surface-2);border:1px solid var(--line);font-size:13.5px;font-weight:600;color:var(--text);letter-spacing:.02em;font-family:var(--f-body)}
 .hero-cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
 .btn-green{display:inline-flex;align-items:center;gap:10px;padding:16px 32px;border-radius:var(--r-pill);background:var(--green);color:#fff;font-size:15px;font-weight:600;box-shadow:var(--shadow-md),inset 0 1px 0 rgba(255,255,255,.15);transition:all .2s}
 .btn-green:hover{background:#257a50;transform:translateY(-2px);box-shadow:var(--shadow-lg)}
@@ -90,8 +99,22 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:1;opac
 .subject-card h3{font-family:var(--f-zh);font-size:24px;font-weight:700;color:var(--text-strong);margin-bottom:6px;letter-spacing:.02em}
 .subject-card .en-label{font-family:var(--f-en);font-style:italic;font-size:14px;color:var(--text-faint);margin-bottom:14px}
 .subject-card p{font-size:14.5px;color:var(--text-muted);line-height:1.85;letter-spacing:.015em}
-.subject-badge{display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:var(--r-pill);background:var(--surface-3);border:1px solid var(--line);font-size:11px;font-weight:600;color:var(--text-muted);margin-top:16px;font-family:var(--f-mono);letter-spacing:.08em;text-transform:uppercase}
-@media(max-width:768px){.subject-grid{grid-template-columns:1fr}}
+.subject-meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+.subject-badge{display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:var(--r-pill);background:var(--surface-3);border:1px solid var(--line);font-size:11px;font-weight:600;color:var(--text-muted);font-family:var(--f-mono);letter-spacing:.08em;text-transform:uppercase}
+.subject-price{font-family:var(--f-mono);font-size:13px;font-weight:700;color:var(--accent);margin-top:12px;letter-spacing:.04em}
+.subject-cta{display:inline-flex;align-items:center;gap:6px;margin-top:14px;padding:10px 20px;border-radius:var(--r-pill);background:var(--green);color:#fff;font-size:13px;font-weight:600;transition:all .2s;box-shadow:var(--shadow-sm)}
+.subject-cta:hover{background:#257a50;transform:translateY(-1px);box-shadow:var(--shadow-md)}
+
+/* ═══ TRIAL STRIP ═══ */
+.trial-strip{background:var(--accent);color:var(--text-inverse);padding:24px 0;position:relative;z-index:2}
+.trial-strip .btn-green{background:#fff;color:var(--accent);font-weight:700;box-shadow:var(--shadow-md)}
+.trial-strip .btn-green:hover{background:var(--surface-3);transform:translateY(-1px)}
+
+/* ═══ WHATSAPP FLOAT ═══ */
+.wa-float{position:fixed;bottom:24px;right:24px;width:56px;height:56px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 12px 32px rgba(37,211,102,.3),0 0 0 1px rgba(255,255,255,.2) inset;z-index:999;transition:transform .2s;text-decoration:none}
+.wa-float:hover{transform:scale(1.08) translateY(-2px)}
+
+@media(max-width:768px){.subject-grid{grid-template-columns:1fr}.trial-strip .container{flex-direction:column;text-align:center;gap:16px}}
 
 /* ═══ EXAM KING CROSS-SELL ═══ */
 .examking{background:var(--accent);color:var(--text-inverse);padding:100px 0;position:relative;overflow:hidden}

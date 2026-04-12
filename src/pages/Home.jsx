@@ -23,6 +23,8 @@ function BlurText({ text, delay = 0 }) {
 function Hero() {
   return (
     <section className="hero">
+      <div className="hero-bg" aria-hidden="true" />
+      <div className="hero-overlay" aria-hidden="true" />
       <div className="hero-content">
         <h1>
           <BlurText text="新舊交替" delay={.2} />
@@ -39,10 +41,13 @@ function Hero() {
           transition={{ duration: .8, delay: 1.3 }}>
           A system designed for primary student progress
         </motion.div>
-        <motion.div className="hero-detail"
+        <motion.div className="hero-facts"
           initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }}
           transition={{ duration: .7, delay: 1.5, ease: EASE }}>
-          1:4 小班 · 針對自身學習進度 · 每堂追蹤學習表現
+          <span className="hero-fact">1:4 小班</span>
+          <span className="hero-fact">P1–P6</span>
+          <span className="hero-fact">英 · 中 · 數</span>
+          <span className="hero-fact">屯門</span>
         </motion.div>
         <motion.div className="hero-cta"
           initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }}
@@ -91,10 +96,26 @@ function ProgressTracking() {
 }
 
 const SUBJECTS = [
-  { icon: '📖', cls: 'en', title: '英文', en: 'English', body: 'P1–P6。1:4 針對自身學習進度。閱讀理解、文法、寫作全覆蓋。' },
-  { icon: '📝', cls: 'zh', title: '中文', en: 'Chinese', body: 'P1–P6。1:4 針對自身學習進度。認字、閱讀、寫作循序漸進。' },
-  { icon: '🔢', cls: 'ma', title: '數學', en: 'Mathematics', body: 'P1–P6。1:4 針對自身學習進度。概念理解行先，唔只操數。' },
+  { icon: '📖', cls: 'en', title: '英文', en: 'English', body: '閱讀理解、文法、寫作全覆蓋。每堂追蹤進度，你隨時了解小朋友學到咩。', price: 'P1–P3: $2,200 / P4–P6: $2,600', slots: '星期一、二、六、日' },
+  { icon: '📝', cls: 'zh', title: '中文', en: 'Chinese', body: '認字、閱讀、寫作循序漸進。粵語授課，配合學校進度。', price: 'P1–P3: $2,200 / P4–P6: $2,600', slots: '星期四' },
+  { icon: '🔢', cls: 'ma', title: '數學', en: 'Mathematics', body: '概念理解行先，唔只操數。邏輯思維同解題技巧並重。', price: 'P1–P3: $2,200 / P4–P6: $2,600', slots: '星期三、四、五、六' },
 ]
+
+function TrialStrip() {
+  return (
+    <motion.section className="trial-strip"
+      initial={{ opacity: 0 }} whileInView={{ opacity: 1 }}
+      viewport={{ once: true }} transition={{ duration: .6 }}>
+      <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 24, flexWrap: 'wrap' }}>
+        <div>
+          <div style={{ fontFamily: 'var(--f-zh)', fontSize: 22, fontWeight: 700, letterSpacing: '.02em' }}>免費試堂 · 親身感受</div>
+          <div style={{ fontSize: 14, color: 'var(--text-muted)', marginTop: 4 }}>星期一至五 7:00–8:00pm · WhatsApp 預約 · 名額有限</div>
+        </div>
+        <a href={WA} target="_blank" rel="noopener" className="btn-green" style={{ flexShrink: 0 }}>WhatsApp 預約試堂</a>
+      </div>
+    </motion.section>
+  )
+}
 
 function Subjects() {
   const stagger = { hidden: {}, show: { transition: { staggerChildren: .12 } } }
@@ -116,7 +137,12 @@ function Subjects() {
                 <h3>{s.title}</h3>
                 <div className="en-label">{s.en}</div>
                 <p>{s.body}</p>
-                <div className="subject-badge">P1–P6 · 1:4 小班</div>
+                <div className="subject-meta">
+                  <span className="subject-badge">P1–P6 · 1:4 小班</span>
+                  <span className="subject-badge">{s.slots}</span>
+                </div>
+                <div className="subject-price">{s.price}<span style={{ fontSize: 11, opacity: .6 }}> / 10 堂</span></div>
+                <a href={WA} target="_blank" rel="noopener" className="subject-cta">WhatsApp 報名 →</a>
               </TiltCard>
             </motion.div>
           ))}
@@ -238,16 +264,26 @@ function FinalCTA() {
   )
 }
 
+function WhatsAppFloat() {
+  return (
+    <a href={WA} target="_blank" rel="noopener" className="wa-float" title="WhatsApp 聯絡我哋">
+      <svg viewBox="0 0 32 32" width="28" height="28" fill="#fff"><path d="M16.004 0C7.164 0 0 7.164 0 16.004c0 2.82.736 5.572 2.136 8l-2.24 8.16 8.36-2.192A15.94 15.94 0 0016.004 32C24.84 32 32 24.84 32 16.004S24.84 0 16.004 0zm0 29.2a13.14 13.14 0 01-7.08-2.064l-.508-.3-5.268 1.38 1.408-5.14-.332-.528A13.12 13.12 0 012.8 16.004c0-7.28 5.924-13.2 13.204-13.2 7.28 0 13.196 5.92 13.196 13.2S23.284 29.2 16.004 29.2zm7.24-9.876c-.396-.2-2.348-1.16-2.712-1.292-.364-.132-.628-.2-.892.2s-1.024 1.292-1.256 1.556c-.232.264-.464.296-.86.1-.396-.2-1.672-.616-3.184-1.964-1.176-1.048-1.972-2.344-2.204-2.74-.232-.396-.024-.608.176-.808.176-.176.396-.464.596-.696.2-.232.264-.396.396-.66.132-.264.068-.496-.032-.696-.1-.2-.892-2.148-1.22-2.94-.324-.776-.652-.672-.892-.684l-.76-.012c-.264 0-.692.1-1.056.496-.364.396-1.388 1.356-1.388 3.304s1.42 3.832 1.62 4.096c.2.264 2.8 4.272 6.784 5.992.948.408 1.688.652 2.264.836.952.3 1.82.26 2.504.156.764-.116 2.348-.96 2.68-1.888.332-.928.332-1.724.232-1.888-.1-.164-.364-.264-.76-.464z"/></svg>
+    </a>
+  )
+}
+
 export default function Home() {
   return (
     <main>
       <Hero />
+      <TrialStrip />
       <ProgressTracking />
       <Subjects />
       <ExamKing />
       <Timetable />
       <Location />
       <FinalCTA />
+      <WhatsAppFloat />
     </main>
   )
 }
