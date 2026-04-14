@@ -22,7 +22,7 @@ export default function About() {
           <p>等到測驗成績單拎返嚟，先知道有問題 — 但已經遲咗。然後又開始搵補習、買練習、責備自己冇盡力。</p>
           <p>我哋知道呢種感覺。<strong>所以小芽菜唔係另一間補習社 — 我哋係幫家長承擔學業壓力嘅一隊人。</strong></p>
 
-          <h2>我哋幫你解決乜</h2>
+          <h2>小芽菜系統可以幫到你</h2>
           <ul>
             <li><strong>成績唔使再估估下。</strong>每堂之後即時學習報告，邊科強、邊度跌、要點補，清清楚楚。家長一望就知。</li>
             <li><strong>唔使再買補充練習。</strong>我哋自家研發嘅 <a href="https://www.examkinghk.com" target="_blank" rel="noopener" style={{ color: 'var(--moss-deep)', fontWeight: 600 }}>考得好 Exam King</a>，老師按小朋友嘅程度，幾秒鐘就出到一份貼合學校單元嘅練習卷。每一張紙都有用。</li>
