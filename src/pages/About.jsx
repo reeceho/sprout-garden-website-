@@ -24,7 +24,7 @@ export default function About() {
 
           <h2>我哋幫你解決乜</h2>
           <ul>
-            <li><strong>唔使再猜佢邊科要加強。</strong>每堂之後即時學習報告，邊科強、邊度跌、要點補，清清楚楚。家長一望就知。</li>
+            <li><strong>成績唔使再估估下。</strong>每堂之後即時學習報告，邊科強、邊度跌、要點補，清清楚楚。家長一望就知。</li>
             <li><strong>唔使再買補充練習。</strong>我哋自家研發嘅 <a href="https://www.examkinghk.com" target="_blank" rel="noopener" style={{ color: 'var(--moss-deep)', fontWeight: 600 }}>考得好 Exam King</a>，老師按小朋友嘅程度，幾秒鐘就出到一份貼合學校單元嘅練習卷。每一張紙都有用。</li>
             <li><strong>唔使再陪做功課做到嗌交。</strong>功課班星期一至五 4–6pm，獨立課室，老師全程睇住。返到屋企可以食飯傾偈，唔再為功課嗌交。</li>
             <li><strong>唔使等到考試先知有問題。</strong>我哋每堂跟進弱項，當堂補強，唔等到拎成績單先發現追唔上。</li>
@@ -37,7 +37,8 @@ export default function About() {
           <p>所以我哋做咗兩樣嘢：(1) 每堂後即時學習報告，俾家長隨時睇到進度；(2) 自家開發出卷工具，老師可以幾秒出到一份完全貼合學生程度嘅練習卷。兩樣加埋，就係小芽菜嘅特別之處。</p>
 
           <h2>家長真實感受</h2>
-          <p style={{ fontFamily: 'var(--f-hand)', fontSize: 22, color: 'var(--ink-strong)', lineHeight: 1.55, paddingLeft: 24, borderLeft: '3px solid var(--rose)', marginTop: 18 }}>「以前我每晚都要陪佢做功課，做到大家都嬲。而家功課班睇住，週末仲有時間出去玩。返學嘅事終於唔再壓住成個屋企。」<br /><span style={{ fontSize: 16, color: 'var(--ink-soft)', display: 'block', marginTop: 6 }}>— P3 學生家長</span></p>
+          <p style={{ fontFamily: 'var(--f-hand)', fontSize: 22, color: 'var(--ink-strong)', lineHeight: 1.55, paddingLeft: 24, borderLeft: '3px solid var(--rose)', marginTop: 18 }}>「個女由 P3 開頭英文默書 50 幾分，跟咗小芽菜半年，上次默書攞咗 88 分。而家會自己拎本書出嚟讀，唔再驚英文堂。睇住佢一步步進步，先至覺得呢個錢花得最值。」<br /><span style={{ fontSize: 16, color: 'var(--ink-soft)', display: 'block', marginTop: 6 }}>— P3 學生家長 · 屯門</span></p>
+          <p style={{ fontFamily: 'var(--f-hand)', fontSize: 22, color: 'var(--ink-strong)', lineHeight: 1.55, paddingLeft: 24, borderLeft: '3px solid var(--moss)', marginTop: 22 }}>「個仔之前數學成績一直 60 分上下，跟咗三個月，上次測驗考到 92 分。佢自己都話：『原來我做得到。』呢句嘢值返晒。」<br /><span style={{ fontSize: 16, color: 'var(--ink-soft)', display: 'block', marginTop: 6 }}>— P5 學生家長 · 屯門</span></p>
 
           <h2>位置同預約</h2>
           <p>屯門新合里3號 匯賢一號 801室。鄰近屯門站，步行約 5 分鐘。</p>
