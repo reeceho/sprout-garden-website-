@@ -482,7 +482,20 @@ body::after{
 .ek-ticker-wrap{overflow:hidden;width:100%;margin-bottom:36px;position:relative;z-index:2;mask-image:linear-gradient(90deg,transparent 0,#fff 8%,#fff 92%,transparent 100%);-webkit-mask-image:linear-gradient(90deg,transparent 0,#fff 8%,#fff 92%,transparent 100%)}
 .ek-ticker{display:flex;gap:16px;width:max-content;will-change:transform}
 .ek-bottom{text-align:center;position:relative;z-index:2}
-@media(max-width:768px){.ek-devices{flex-direction:column;align-items:center;gap:24px}.ek-laptop{max-width:100%}.ek-phone{width:180px;margin-left:0}}
+/* Tablet range — laptop+phone need tighter proportions so the laptop
+   doesn't go too wide and the phone doesn't get crushed against it. */
+@media(min-width:769px) and (max-width:1024px){
+  .ek-devices{gap:0;padding:0 16px;margin-bottom:40px}
+  .ek-laptop{max-width:440px}
+  .ek-phone{width:108px;margin-left:-48px;margin-bottom:-8px;border-radius:18px;padding:6px}
+  .ek-phone-notch{width:36px;height:4px}
+  .ek-phone-screen{border-radius:13px}
+}
+@media(max-width:768px){
+  .ek-devices{flex-direction:column;align-items:center;gap:28px;padding:0}
+  .ek-laptop{max-width:100%}
+  .ek-phone{width:170px;margin-left:0;margin-bottom:0}
+}
 .ek-body h2{font-family:var(--f-zh);font-size:clamp(30px,3vw,46px);font-weight:700;letter-spacing:.02em;line-height:1.35;margin-bottom:16px;color:var(--ink-strong)}
 .ek-body p{font-family:var(--f-display);font-size:17px;line-height:1.9;color:var(--ink-soft);margin-bottom:24px;letter-spacing:.01em}
 .ek-pubs{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:28px}
