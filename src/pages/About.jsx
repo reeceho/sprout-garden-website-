@@ -42,7 +42,7 @@ export default function About() {
 
           <h2>位置同預約</h2>
           <p>屯門新合里3號 匯賢一號 801室。鄰近屯門站，步行約 5 分鐘。</p>
-          <p>想試一堂？直接 WhatsApp <a href="https://wa.me/85244270658" target="_blank" rel="noopener" style={{ color: 'var(--moss-deep)', fontWeight: 600 }}>+852 4427 0658</a> — 第一堂免費，唔啱可以隨時走，零壓力。</p>
+          <p>想試一堂？直接 WhatsApp <a href="https://wa.me/85244270658" target="_blank" rel="noopener" style={{ color: 'var(--moss-deep)', fontWeight: 600 }}>+852 4427 0658</a></p>
         </motion.div>
       </div>
     </main>
